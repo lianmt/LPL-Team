@@ -1,10 +1,18 @@
 {
   "name": "blog",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
+
+  "//": "npm 快捷启动命令，启动项目",
+  "//": "例子：npm start",
   "scripts": {
     "start": "node ./bin/www"
   },
+
+  "//": "存储着工程的信息及模块依赖",
+  "//": "当在 dependencies 中添加依赖的模块时",
+  "//": "运行 npm install，npm 会检查当前目录下的 package.json",
+  "//": "并自动安装所有指定的模",
   "dependencies": {
     "body-parser": "~1.15.1",
     "cookie-parser": "~1.4.3",
