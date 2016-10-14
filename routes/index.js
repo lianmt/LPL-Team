@@ -13,8 +13,13 @@
  //   res.render('index', { title: 'LPL' });
  // });
 
- 
+
 module.exports = function(app) {
+  // 添加一条测试路由
+  // app.get('/lianmingtang', function (req, res) {
+  //   res.send('hello,world!');
+  // });
+
   app.get('/', function(req, res, next) {
     res.render('index', { title: 'LPL' });
   });
