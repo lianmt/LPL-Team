@@ -26,7 +26,12 @@ var app = express();
 
 /**
  * 使用 express-session 和 connect-mongo 模块
- * 实现了将会化信息存储到mongoldb中
+ * 使用 express-session 和 connect-mongo 模块实现了将会化信息存储到mongoldb中。
+ * secret 用来防止篡改 cookie，key 的值为 cookie 的名字，
+ * 通过设置 cookie 的 maxAge 值设定 cookie 的生存期，
+ * 这里我们设置 cookie 的生存期为 30 天，设置它的 store 参数为 MongoStore 实例，
+ * 把会话信息存储到数据库中，以避免丢失。
+ * 在后面的小节中，我们可以通过 req.session 获取当前用户的会话对象，获取用户的相关信息。
  */
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);

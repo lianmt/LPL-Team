@@ -6,7 +6,7 @@
   "//": "npm 快捷启动命令，启动项目",
   "//": "例子：npm start",
   "scripts": {
-    "start": "node app.js"
+    "start": "node ./app"
   },
 
   "//": "存储着工程的信息及模块依赖",
@@ -17,13 +17,16 @@
     "body-parser": "~1.15.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
-    "ejs": "~2.4.1",
     "express": "~4.13.4",
+    "jade": "~1.11.0",
     "morgan": "~1.7.0",
-    "serve-favicon": "~2.3.0",
-    "mongodb": "3.0.7",
     "express-session": "1.9.1",
     "connect-mongo": "0.8.2",
-    "connect-flash": "0.1.1"
+    "mongodb": "2.0.42", 
+    "connect-flash": "0.1.1",
+    "markdown": "0.5.0",
+    "multer": "1.1.0",
+    "serve-favicon": "~2.3.0",
+    "express-compile-sass": "3.0.4"
   }
 }
