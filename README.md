@@ -7,7 +7,8 @@
 
 数据库启动命令：
 1、./mongod --dbpath ../blog/
-
+supervisor 都会自动帮我们重启应用
+supervisor app.js
 
 
 app.js：启动文件，或者说入口文件

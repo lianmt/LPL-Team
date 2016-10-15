@@ -13,6 +13,9 @@
  //   res.render('index', { title: 'LPL' });
  // });
 
+// crypto 是 Node.js 的一个核心模块，我们用它生成散列值来加密密码。
+var crypto = require('crypto'),
+    User = require('../models/user.js');
 
 module.exports = function(app) {
   // 添加一条测试路由
@@ -27,6 +30,52 @@ module.exports = function(app) {
     res.render('reg', { title: '注册' });
   });
   app.post('/reg', function (req, res) {
+    // req.body就是 POST 请求信息解析过后的对象，
+    // 例如我们要访问 POST 来的表单内的 name="password" 域的值，
+    // 只需访问 req.body['password'] 或 req.body.password 即可
+    var name = req.body.name,
+        password = req.body.password,
+        password_re = req.body['password-repeat'];
+    //检验用户两次输入的密码是否一致
+    if (password_re != password) {
+      req.flash('error', '两次输入的密码不一致!'); 
+
+      // 重定向功能，实现了页面的跳转
+      return res.redirect('/reg');//返回注册页
+    }
+    //生成密码的 md5 值
+    var md5 = crypto.createHash('md5'),
+        password = md5.update(req.body.password).digest('hex');
+    var newUser = new User({
+        name: name,
+        password: password,
+        email: req.body.email
+    });
+    //检查用户名是否已经存在 
+    //User 是一个描述数据的对象，即 MVC 架构中的模型。
+    //前面我们使用了许多视图和控制器，这是第一次接触到模型。
+    //与视图和控制器不同，模型是真正与数据打交道的工具，
+    //没有模型，网站就只是一个外壳，不能发挥真实的作用，因此它是框架中最根本的部分。
+    User.get(newUser.name, function (err, user) {
+      if (err) {
+        req.flash('error', err);
+        return res.redirect('/');
+      }
+      if (user) {
+        req.flash('error', '用户已存在!');
+        return res.redirect('/reg');//返回注册页
+      }
+      //如果不存在则新增用户
+      newUser.save(function (err, user) {
+        if (err) {
+          req.flash('error', err);
+          return res.redirect('/reg');//注册失败返回主册页
+        }
+        req.session.user = newUser;//用户信息存入 session
+        req.flash('success', '注册成功!');
+        res.redirect('/');//注册成功后返回主页
+      });
+    });
   });
   app.get('/login', function (req, res) {
     res.render('login', { title: '登录' });

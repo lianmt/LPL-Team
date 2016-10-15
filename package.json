@@ -6,7 +6,7 @@
   "//": "npm 快捷启动命令，启动项目",
   "//": "例子：npm start",
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node app.js"
   },
 
   "//": "存储着工程的信息及模块依赖",
@@ -23,6 +23,7 @@
     "serve-favicon": "~2.3.0",
     "mongodb": "3.0.7",
     "express-session": "1.9.1",
-    "connect-mongo": "0.8.2"
+    "connect-mongo": "0.8.2",
+    "connect-flash": "0.1.1"
   }
 }

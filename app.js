@@ -15,6 +15,7 @@ var routes = require('./routes/index');
  * 通过 require 这个文件来对数据库进行读写
  */
 var settings = require('./settings');
+var flash = require('connect-flash');
 
 // 后期简化而成的代码
 // var users = require('./routes/users');
@@ -27,28 +28,29 @@ var app = express();
  * 使用 express-session 和 connect-mongo 模块
  * 实现了将会化信息存储到mongoldb中
  */
-// var session = require('express-session');
-// var MongoStore = require('connect-mongo')(session);
+var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
 
-// app.use(session({
-//   secret: settings.cookieSecret,
-//   key: settings.db,//cookie name
-//   cookie: {maxAge: 1000 * 60 * 60 * 24 * 30},//30 days
-//   store: new MongoStore({
-//     db: settings.db,
-//     host: settings.host,
-//     port: settings.port
-//   })
-// }));
+app.use(session({
+  secret: settings.cookieSecret,
+  key: settings.db,//cookie name
+  cookie: {maxAge: 1000 * 60 * 60 * 24 * 30},//30 days
+  store: new MongoStore({
+    db: settings.db,
+    host: settings.host,
+    port: settings.port
+  })
+}));
 
 
 // 设置端口号
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 5000);
 // 设置 views 文件夹为存放视图文件的目录, 即存放模板文件的地方,
 // __dirname 为全局变量,存储当前正在执行的脚本所在的目录。
 app.set('views', path.join(__dirname, 'views'));
 // 设置视图模板引擎为 ejs
 app.set('view engine', 'ejs');
+app.use(flash());
 
 // 设置/favicon.ico为 网站favicon图标。
 // app.use(favicon(path.join(__dirname,'public','images','favicon.ico')));
