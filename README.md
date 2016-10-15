@@ -1,9 +1,13 @@
 #LPL
 参考项目教程：https://github.com/nswbmw/N-blog/wiki/_pages
-启动命令的方式：
+项目启动命令：
 1、DEBUG=blog:* npm start
 2、npm start
 3、node app.js
+
+数据库启动命令：
+1、./mongod --dbpath ../blog/
+
 
 
 app.js：启动文件，或者说入口文件
@@ -13,3 +17,24 @@ public：存放 image、css、js 等文件
 routes：存放路由文件
 views：存放视图文件或者说模版文件
 bin：存放可执行文件
+
+
+ejs 的标签系统非常简单，它只有以下三种标签：
+<% code %>：JavaScript 代码。
+<%= code %>：显示替换过 HTML 特殊字符的内容。
+<%- code %>：显示原始 HTML 内容。
+<%- include %>：引入公共文件
+
+通过引入会话（session）机制记录用户登录状态
+
+环境搭建：
+1、安装nodejs（包含了npm）
+2、安装对应系统的mongodb数据库
+3、创建数据库的储存空间，跑起数据库
+4、安装对应的自动修改相关插件，跑起我们的项目
+
+
+
+
+
+

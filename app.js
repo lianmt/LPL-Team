@@ -8,7 +8,18 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
+
+/**
+ * 设置数据库名、数据库地址和数据库端口创建了一个数据库连接实例，
+ * 并通过 module.exports 导出该实例
+ * 通过 require 这个文件来对数据库进行读写
+ */
+var settings = require('./settings');
+
+// 后期简化而成的代码
 // var users = require('./routes/users');
+
+
 
 var app = express();
 
@@ -40,6 +51,11 @@ routes(app);
 app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
 });
+
+
+/**
+ * 后期简化而成的代码
+ */
 
 // // 路由控制器
 // app.use('/', routes);
