@@ -27,19 +27,19 @@ var app = express();
  * 使用 express-session 和 connect-mongo 模块
  * 实现了将会化信息存储到mongoldb中
  */
-var session = require('express-session');
-var MongoStore = require('connect-mongo')(session);
+// var session = require('express-session');
+// var MongoStore = require('connect-mongo')(session);
 
-app.use(session({
-  secret: settings.cookieSecret,
-  key: settings.db,//cookie name
-  cookie: {maxAge: 1000 * 60 * 60 * 24 * 30},//30 days
-  store: new MongoStore({
-    db: settings.db,
-    host: settings.host,
-    port: settings.port
-  })
-}));
+// app.use(session({
+//   secret: settings.cookieSecret,
+//   key: settings.db,//cookie name
+//   cookie: {maxAge: 1000 * 60 * 60 * 24 * 30},//30 days
+//   store: new MongoStore({
+//     db: settings.db,
+//     host: settings.host,
+//     port: settings.port
+//   })
+// }));
 
 
 // 设置端口号
