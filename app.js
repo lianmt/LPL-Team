@@ -58,7 +58,7 @@ app.set('view engine', 'ejs');
 app.use(flash());
 
 // 设置/favicon.ico为 网站favicon图标。
-// app.use(favicon(path.join(__dirname,'public','images','favicon.ico')));
+app.use(favicon(path.join(__dirname,'public','images','favicon.ico')));
 
 // 加载日志中间件
 app.use(logger('dev'));

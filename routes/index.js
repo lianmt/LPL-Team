@@ -15,7 +15,8 @@
 
 // crypto 是 Node.js 的一个核心模块，我们用它生成散列值来加密密码。
 var crypto = require('crypto'),
-    User = require('../models/user.js');
+    User = require('../models/user.js'),
+    Post = require('../models/post.js');
 
 module.exports = function(app) {
   // 添加一条测试路由
@@ -24,11 +25,17 @@ module.exports = function(app) {
   // });
 
   app.get('/', function (req, res) {
-    res.render('index', {
-      title: '主页',
-      user: req.session.user,
-      success: req.flash('success').toString(),
-      error: req.flash('error').toString()
+    Post.get(null, function (err, posts) {
+      if (err) {
+        posts = [];
+      } 
+      res.render('index', {
+        title: '主页',
+        user: req.session.user,
+        posts: posts,
+        success: req.flash('success').toString(),
+        error: req.flash('error').toString()
+      });
     });
   });
 
@@ -136,6 +143,16 @@ module.exports = function(app) {
 
   app.post('/post', checkLogin);
   app.post('/post', function (req, res) {
+    var currentUser = req.session.user,
+        post = new Post(currentUser.name, req.body.title, req.body.post, req.body.link);
+    post.save(function (err) {
+      if (err) {
+        req.flash('error', err); 
+        return res.redirect('/');
+      }
+      req.flash('success', '发布成功!');
+      res.redirect('/');//发表成功跳转到主页
+    });
   });
 
   app.get('/logout', checkLogin);
@@ -146,6 +163,12 @@ module.exports = function(app) {
   });
 };
 
+
+/**
+ * checkNotLogin 和 checkLogin 用来检测是否登陆，
+ * 并通过 next() 转移控制权，检测到未登录则跳转到登录页，
+ * 检测到已登录则跳转到前一个页面
+ */
 function checkLogin(req, res, next) {
   if (!req.session.user) {
     req.flash('error', '未登录!'); 
@@ -153,7 +176,6 @@ function checkLogin(req, res, next) {
   }
   next();
 }
-
 function checkNotLogin(req, res, next) {
   if (req.session.user) {
     req.flash('error', '已登录!'); 
