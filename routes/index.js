@@ -16,7 +16,31 @@
 // crypto 是 Node.js 的一个核心模块，我们用它生成散列值来加密密码。
 var crypto = require('crypto'),
     User = require('../models/user.js'),
-    Post = require('../models/post.js');
+    Post = require('../models/post.js'),
+    multer  = require('multer');
+
+/**
+ * 使用express的第三方中间件 multer 实现文件上传功能
+ */
+// 原版本使用方法
+//app.use(multer({
+//  dest: './public/images',
+//  rename: function (fieldname, filename) {
+//    return filename;
+//  }
+//}));
+// 新的使用方法
+var storage = multer.diskStorage({
+    destination: function (req, file, cb){
+        cb(null, './public/images')
+    },
+    filename: function (req, file, cb){
+        cb(null, file.originalname)
+    }
+});
+var upload = multer({
+    storage: storage
+});
 
 module.exports = function(app) {
   // 添加一条测试路由
@@ -161,6 +185,26 @@ module.exports = function(app) {
     req.flash('success', '登出成功!');
     res.redirect('/');//登出成功后跳转到主页
   });
+
+  app.get('/upload', checkLogin);
+  app.get('/upload', function (req, res) {
+    res.render('upload', {
+      title: '文件上传',
+      user: req.session.user,
+      success: req.flash('success').toString(),
+      error: req.flash('error').toString()
+    });
+  });
+  app.post('/upload', checkLogin);
+  app.post('/upload', upload.array('field1', 5), function (req, res) {
+    req.flash('success', '文件上传成功!');
+    res.redirect('/upload');
+  });
+
+
+
+
+
 };
 
 
