@@ -1,9 +1,10 @@
 var mongodb = require('./db'),
     markdown = require('markdown').markdown;;
 
-function Post(name, title, post, link) {
+function Post(name, title, tags, post, link) {
   this.name = name;
   this.title = title;
+  this.tags = tags;
   this.post = post;
   this.link = link;
 }
@@ -28,6 +29,7 @@ Post.prototype.save = function(callback) {
       name: this.name,
       time: time,
       title: this.title,
+      tags: this.tags,
       post: this.post,
       link: this.link,
       comments: []
@@ -258,6 +260,70 @@ Post.getArchive = function(callback) {
     });
   });
 };
+
+//返回所有标签
+Post.getTags = function(callback) {
+  mongodb.open(function (err, db) {
+    if (err) {
+      return callback(err);
+    }
+    db.collection('posts', function (err, collection) {
+      if (err) {
+        mongodb.close();
+        return callback(err);
+      }
+      //distinct 用来找出给定键的所有不同值
+      collection.distinct("tags", function (err, docs) {
+        mongodb.close();
+        if (err) {
+          return callback(err);
+        }
+        callback(null, docs);
+      });
+    });
+  });
+};
+
+//返回含有特定标签的所有文章
+Post.getTag = function(tag, callback) {
+  mongodb.open(function (err, db) {
+    if (err) {
+      return callback(err);
+    }
+    db.collection('posts', function (err, collection) {
+      if (err) {
+        mongodb.close();
+        return callback(err);
+      }
+      //查询所有 tags 数组内包含 tag 的文档
+      //并返回只含有 name、time、title 组成的数组
+      collection.find({
+        "tags": tag
+      }, {
+        "name": 1,
+        "time": 1,
+        "title": 1
+      }).sort({
+        time: -1
+      }).toArray(function (err, docs) {
+        mongodb.close();
+        if (err) {
+          return callback(err);
+        }
+        callback(null, docs);
+      });
+    });
+  });
+};
+
+
+
+
+
+
+
+
+
 
 
 
