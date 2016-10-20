@@ -13,6 +13,7 @@
     链接：<a href="<%= post.link %>">查看教程demo</a>
   </p>
   <p><%- post.post %></p>
+  <p class="info">阅读：<%= post.pv %> | 评论：<%= post.comments.length %></p>
   <% }) %>
 
 <%- include paging %>
