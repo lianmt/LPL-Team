@@ -1,28 +1,46 @@
-<%- include header %>
-<p>
-  <p>
-  <h2>
-  <a href="u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>"><%= post.title %></a>
-  <% if (user && (user.name == post.name)) { %>
-    <span><a class="edit" href="/edit/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">编辑</a></span>
-    <span><a class="edit" href="/remove/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">删除</a></span>
-  <% } %>
-  </h2>
-  </p>
-  
-</p>
-<p class="info">
-  作者：<a href="/u/<%= post.name %>"><%= post.name %></a> | 
-  日期：<%= post.time.minute %> | 
-  标签：
-  <% post.tags.forEach(function (tag, index) { %>
-    <% if (tag) { %>
-      <a class="tag" href="/tags/<%= tag %>"><%= tag %></a>
-    <% } %>
-  <% }) %>
-</p><p><%- post.post %></p>
-<p class="info">阅读：<%= post.pv %> | 评论：<%= post.comments.length %></p>
-<a href="<%= post.link %>">查看教程demo</a>
+<!-- 课程详情 -->
 
-<%- include comment %>
+<%- include header %>
+<link rel="stylesheet" href="/stylesheets/course-detail.css">
+
+<div class="page course-detail" style="display: block;">
+  <!-- 标题栏 -->
+  <header class="bar bar-nav">
+    <a class="icon icon-left pull-left back"></a>
+    <h1 class="title"><%= post.title %>-课程详情</h1>
+  </header>
+
+  <div class="content">
+    <div class="content-block J_lessonDetail">
+      <img class="main-img" src="/images/favicon.png">
+      
+      <div class="detail">
+        <h3>
+          <%= post.title %>
+          <% if (user && (user.name == post.name)) { %>
+            <span><a class="edit" href="/edit/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">编辑</a></span>
+            <span><a class="edit" href="/remove/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">删除</a></span>
+          <% } %>
+        </h3>
+        <p>
+          <%= post.time.minute %>
+          <% post.tags.forEach(function (tag, index) { %>
+            <% if (tag) { %>
+              <a class="tag" href="/tags/<%= tag %>"><%= tag %></a>
+            <% } %>
+          <% }) %>
+        </p>
+        <p class="c-detail"><%- post.post %>对于过去的人和过去的事，我们的态度多与旁人无异。他们背叛是为了找回那背叛过的曾经，他们回忆是为了不让回忆就此消失在过去。他们相信是因为知道这世上还有人值得相信，一次莫名其妙的生命之旅，却在黑暗中划出一道灿烂的轨迹。</p>
+      </div>
+
+      <p>阅读：<%= post.pv %> | 评论：<%= post.comments.length %></p>
+      <%- include comment %>
+    </div>      
+  </div>
+  
+
+  <!-- 立即报名 -->
+  <a class="a-btn" href="<%= post.link %>">查看课程演示</a>
+</div>
+
 <%- include footer %>

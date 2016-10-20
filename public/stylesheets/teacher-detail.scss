@@ -1,0 +1,64 @@
+@import "./_rem.scss";
+
+.content .content-block {
+  padding: 0;
+  margin: 0;
+}
+.teacher-detail {
+  .content {
+    padding-bottom: rem(100);
+  }
+  .content {
+    top: rem(80);
+    padding-bottom: rem(110);
+  }
+  .active {
+    display: block;
+  }
+  .facebook-card {
+    .facebook-name, .facebook-date {
+      margin-left: 0;
+    }
+    .facebook-name {
+      font-size: rem(32);
+      color: #333;
+    }
+    .facebook-date {
+      color: #999;
+    }
+    .card-img {
+      width: 100%;
+    }
+  }
+  .main-img {
+    width: 100%;
+    max-height: rem(450);
+    overflow: hidden;
+  }
+  .detail {
+    padding: 0 0.75rem rem(20);
+    background-color: #fff;
+
+    p, h3 {
+      margin: 0;
+    }
+    h3 {
+      padding: rem(20) 0;
+    }
+  }
+  .content-block-title {
+    font-weight: 700;
+    font-size: 1.17em;
+    margin: 0.75rem .75rem .5rem;
+  }
+  .list-block {
+    margin: rem(10);
+  }
+}
+
+
+
+
+
+
+

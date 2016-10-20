@@ -1,0 +1,59 @@
+@import "./_rem.scss";
+body .page, body  .page-group {
+  background: #fff;
+}
+.content .content-block {
+  padding: 0;
+  margin: 0;
+}
+.course-detail {
+  background-color: #fff;
+
+  .main-img {
+    width: 100%;
+    max-height: rem(450);
+    overflow: hidden;
+  }
+  .detail {
+    padding: 0 0.75rem rem(40);
+
+    p, h3 {
+      margin: 0;
+    }
+    h3 {
+      padding: rem(20) 0;
+    }
+  }
+  .comment-box {
+    padding: 0 rem(20);
+    box-sizing: border-box;
+  }
+  form {
+    margin-bottom: rem(120);
+
+    .hide {
+      display: none;
+    }
+    input, textarea {
+      border: 1px solid #ccc;
+    }
+    textarea {
+      width: 100%;
+    }
+  }
+  .a-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    min-height: 2.5rem;
+    padding-right: 0.75rem;
+    color: #fff;
+    background-color: #29a6ff;
+    border-radius: rem(10);
+    z-index: 15;
+  }
+}
+

@@ -1,0 +1,57 @@
+.link-a {
+  display: flex;
+  width: 100%;
+  justify-content: center; }
+
+.c-blue {
+  color: #0894ec; }
+
+.list-img {
+  width: 4rem;
+  height: 4rem; }
+
+.search .content {
+  top: 4.5rem;
+  padding-bottom: 2.75rem; }
+  .search .content .active {
+    display: block; }
+  .search .content .facebook-card .facebook-name, .search .content .facebook-card .facebook-date {
+    margin-left: 0; }
+  .search .content .facebook-card .facebook-name {
+    font-size: 0.8rem;
+    color: #333; }
+  .search .content .facebook-card .facebook-date {
+    color: #999; }
+.search .card-img {
+  width: 100%;
+  max-height: 9rem;
+  height: 9rem;
+  padding: 0 0.5rem; }
+.search .card-content p {
+  color: #999; }
+.search .index-content .content-block-title {
+  margin: 0.75rem .75rem .5rem; }
+.search .index-content .list-block {
+  margin: 0.25rem; }
+.search .user-info .content-block {
+  margin: 0; }
+.search .user-info .portrait {
+  display: flex;
+  align-item: center; }
+  .search .user-info .portrait input {
+    width: auto; }
+.search .user-info .content {
+  top: 4rem; }
+  .search .user-info .content ul {
+    background-color: transparent; }
+    .search .user-info .content ul a {
+      color: #fff; }
+  .search .user-info .content .list-block .item-title {
+    font-weight: 300; }
+.search .user-info .user-photo {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-right: 0.5rem;
+  border-radius: 50%; }
+
+/*# sourceMappingURL=search.css.map */

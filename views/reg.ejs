@@ -1,9 +1,62 @@
+<!-- 注册 -->
 <%- include header %>
-<form method="post">
-  用户名：  <input type="text" name="name"/><br />
-  密码：    <input type="password" name="password"/><br />
-  确认密码：<input type="password" name="password-repeat"/><br />
-  邮箱：    <input type="email" name="email"/><br />
-           <input type="submit" value="注册"/>
+
+<form class="page-group index" method="post">
+  <div class="page page-current" id="page-index">
+    <header class="bar bar-nav">
+      <a class="icon icon-left pull-left back"></a>
+      <h1 class="title">注册</h1>
+    </header>
+    <div class="content">
+      <div class="list-block">
+        <ul>
+          <!-- Text inputs -->
+          <li>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title label">用户名：</div>
+                <div class="item-input">
+                  <input type="text" name="name" placeholder="Your name">
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title label">密码：</div>
+                <div class="item-input">
+                  <input type="password" name="password" placeholder="Your password">
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title label">确认密码：</div>
+                <div class="item-input">
+                  <input type="password" name="password-repeat" placeholder="confirm password">
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title label">邮箱：</div>
+                <div class="item-input">
+                  <input type="email" name="email" placeholder="E-mail">
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      
+      <input class="button button-big button-fill button-success" type="submit" value="注册">
+    </div>
+  </div>
 </form>
+
 <%- include footer %>

@@ -1,22 +1,165 @@
+<!-- 这是主页 -->
+<link rel="stylesheet" href="/stylesheets/index.css">
 <%- include header %>
-<% posts.forEach(function (post, index) { %>
-  <p><h2><a href="u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>"><%= post.title %></a>
-    <a href="/u/<%= post.name %>"><img src="<%= post.head %>" class="r_head" /></a>
-  </h2></p>
-  <p class="info">
-    作者：<a href="u/<%= post.name %>"><%= post.name %></a> |
-    日期：<%= post.time.minute %>| 
-    标签：
-    <% post.tags.forEach(function (tag, index) { %>
-      <% if (tag) { %>
-        <a class="tag" href="/tags/<%= tag %>"><%= tag %></a>
-      <% } %>
-    <% }) %>
-    链接：<a href="<%= post.link %>">查看教程demo</a>
-  </p>
-  <p><%- post.post %></p>
-  <p class="info">阅读：<%= post.pv %> | 评论：<%= post.comments.length %></p>
-  <% }) %>
+<div class="page-group index">
+  <div class="page page-current" id="page-index">
+    <header class="bar bar-nav">
+      <a class="icon icon-me pull-left open-panel" data-panel=".panel-left"></a>
+      <h1 class="title">首页</h1>
+    </header>
+    <%# tab %>
+    <nav class="bar bar-tab">
+      <a class="tab-item external tab-link link-teacher" href="#teacher" data-tab="teacher">
+          <span class="icon icon-home"></span>
+          <span class="tab-label">导师</span>
+      </a>
+      <a class="tab-item external tab-link active link-home" href="#home" data-tab="home">
+          <span class="icon icon-me"></span>
+          <span class="tab-label">首页</span>
+      </a>
+      <a class="tab-item external tab-link link-course" href="#course" data-tab="course">
+          <span class="icon icon-star"></span>
+          <span class="tab-label">教程</span>
+      </a>
+    </nav>
+    <div class="tabs">
 
-<%- include paging %>
+      <%# 教程tab %>
+      <div class="content index-content course">
+        <div class="content-block-title">教程列表</div>
+        <div class="list-block media-list">
+        <ul>
+        <% posts.forEach(function (post, index) { %> 
+          <li>
+            <a href="/u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>" class="item-link item-content">
+              <div class="item-media"><img class="list-img" src="/images/favicon.png"></div>
+              <div class="item-inner">
+                <div class="item-title-row">
+                  <div class="item-title"><%= post.title %></div>
+                  <div class="item-after">
+                    <% post.tags.forEach(function (tag, index) { %>
+                      <% if (tag) { %>
+                        <%= tag %>
+                      <% } %>
+                    <% }) %>
+                  </div>
+                </div>
+                <div class="item-subtitle"><%= post.time.minute %></div>
+                <div class="item-text"><%- post.post %></div>
+              </div>
+            </a>
+          </li>
+        <% }) %>
+        </ul>
+        </div>
+      </div>
+
+      <%# 首页tab %>
+      <div class="content index-content home active">
+        <div class="content-block-title">优秀导师</div>
+        <!-- <div class="list-block media-list">
+          <ul>
+            <li>
+              <a href="./teacher-detail" class="item-link item-content">
+                <div class="item-media"><img class="list-img" src="/images/weijian.jpg"></div>
+                <div class="item-inner">
+                  <div class="item-title-row">
+                    <div class="item-title">林伟健</div>
+                    <div class="item-after">百度前端工程师</div>
+                  </div>
+                  <div class="item-text">花生啤酒花千骨，虐我千百遍，对就是对，错就是错！</div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div> -->
+        <div class="content-block-title">优秀教程</div>
+        <!-- <div class="card facebook-card">
+          <a href="./course-detail">
+            <div class="card-header no-border">
+              <div class="facebook-name">分页页码制作</div>
+              <div class="facebook-date">8月1日</div>
+            </div>
+            <div class="card-content">
+              <img class="card-img" src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg"></div>
+            <div class="card-content">
+              <div class="card-content-inner">
+                <p>通过本课程的学习，我们可以学习到利用HTML、CSS样式技术制作出分页页码的效果。包括最简单的直角分页页码效果，修复行内元素之间的间隔bug问题分析，代码整理，为分页页码插入小图标。</p>
+              </div>
+            </div>
+            <div class="card-footer no-border">阅读原文</div>
+          </a>
+        </div> -->
+      </div>
+
+      <%# 导师tab  %>
+      <div class="content index-content teacher">
+        <div class="content-block-title">导师名单</div>
+        <!-- <div class="card facebook-card">
+          <a href="./course-detail">
+            <div class="card-header no-border">
+              <div class="facebook-name">分页页码制作</div>
+              <div class="facebook-date">8月1日</div>
+            </div>
+            <div class="card-content">
+              <img class="card-img" src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg"></div>
+            <div class="card-content">
+              <div class="card-content-inner">
+                <p>通过本课程的学习，我们可以学习到利用HTML、CSS样式技术制作出分页页码的效果。包括最简单的直角分页页码效果，修复行内元素之间的间隔bug问题分析，代码整理，为分页页码插入小图标。</p>
+              </div>
+            </div>
+            <div class="card-footer no-border">阅读原文</div>
+          </a>
+        </div> -->
+      </div>
+    </div>
+    
+  </div>
+  <div class="panel-overlay"></div>
+  <div class="panel panel-left panel-reveal user-info">
+    <div class="content-block">
+      <%# 注册登录 %>
+      <% if (user) { %>
+
+        <p class="portrait">
+          <img class="user-photo" src="/images/me.jpg" alt="">
+          <a href="#" class="close-panel c-blue"><%= user.name %></a>&nbsp;
+          <a title="登出" href="/logout">登出</a>
+        </p>
+
+        <form action="/search" method="GET">
+          <div class="search-input">
+            <label class="icon icon-search" for="search"></label>
+            <input type="text" name="keyword" id='search' placeholder='输入课程关键字...'/>
+          </div>
+        </form>
+      <% } else { %>
+        <a href="/login">登录</a> / <a href="/reg">注册</a>
+      <% } %>
+
+      <%# 标签 %>
+      <div class="content">
+        <div class="content-block-title">课程</div>
+        <div class="list-block">
+          <ul>
+            <% tags.forEach(function (tag, index) { %>
+              <% if (tag) { %>
+                <li class="item-content">
+                  <a class="link-a" href="/tags/<%= tag %>?title=<%= tag %>">
+                    <div class="item-media"><i class="icon icon-f7"></i></div>
+                    <div class="item-inner">
+                      <div class="item-title"><%= tag %></div>
+                    </div>
+                  </a>
+                </li>
+              <% } %>
+            <% }) %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <%- include footer %>
+<script src="/javascripts/index.js"></script>

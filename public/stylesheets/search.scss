@@ -1,0 +1,96 @@
+@import "./_rem.scss";
+
+.link-a {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+.c-blue {
+  color: #0894ec;
+} 
+.list-img {
+  width: rem(160);
+  height: rem(160);
+}
+
+.search {
+  .content {
+    top: 4.5rem;
+    padding-bottom: rem(110);
+
+    .active {
+      display: block;
+    }
+    .facebook-card {
+      .facebook-name, .facebook-date {
+        margin-left: 0;
+      }
+      .facebook-name {
+        font-size: rem(32);
+        color: #333;
+      }
+      .facebook-date {
+        color: #999;
+      }
+    }
+  }
+  .card-img {
+    width: 100%;
+    max-height: rem(360);
+    height: rem(360);
+    padding: 0 rem(20);
+  }
+  .card-content {
+    p {
+      color: #999;
+    }
+  }
+
+  .index-content {
+    .content-block-title {
+      margin: 0.75rem .75rem .5rem;
+    }
+    .list-block {
+      margin: rem(10);
+    }
+  }
+
+  .user-info {
+    .content-block {
+      margin: 0;
+    }
+    .portrait {
+      display: flex;
+      align-item: center;
+
+      input {
+        width: auto;
+      }
+    }
+    .content {
+      top: rem(160);
+
+      ul {
+        background-color: transparent;
+  
+        a {
+          color: #fff;
+        }
+      }
+      .list-block .item-title {
+        font-weight: 300;
+      }
+    }
+
+    .user-photo {
+      width: rem(100);
+      height: rem(100);
+      margin-right: rem(20);
+      border-radius: 50%;
+    }
+  }
+
+}
+
+
+

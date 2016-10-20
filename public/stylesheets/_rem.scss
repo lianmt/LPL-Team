@@ -1,0 +1,7 @@
+$rem-config:(
+  "base": 20,
+  "rate": 2,
+);
+@function rem($value) {
+  @return $value / map-get($rem-config, "base") / map-get($rem-config, "rate")  + rem;
+}

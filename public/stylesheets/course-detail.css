@@ -1,0 +1,45 @@
+body .page, body .page-group {
+  background: #fff; }
+
+.content .content-block {
+  padding: 0;
+  margin: 0; }
+
+.course-detail {
+  background-color: #fff; }
+  .course-detail .main-img {
+    width: 100%;
+    max-height: 11.25rem;
+    overflow: hidden; }
+  .course-detail .detail {
+    padding: 0 0.75rem 1rem; }
+    .course-detail .detail p, .course-detail .detail h3 {
+      margin: 0; }
+    .course-detail .detail h3 {
+      padding: 0.5rem 0; }
+  .course-detail .comment-box {
+    padding: 0 0.5rem;
+    box-sizing: border-box; }
+  .course-detail form {
+    margin-bottom: 3rem; }
+    .course-detail form .hide {
+      display: none; }
+    .course-detail form input, .course-detail form textarea {
+      border: 1px solid #ccc; }
+    .course-detail form textarea {
+      width: 100%; }
+  .course-detail .a-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    min-height: 2.5rem;
+    padding-right: 0.75rem;
+    color: #fff;
+    background-color: #29a6ff;
+    border-radius: 0.25rem;
+    z-index: 15; }
+
+/*# sourceMappingURL=course-detail.css.map */

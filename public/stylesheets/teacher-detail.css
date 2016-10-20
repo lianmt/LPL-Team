@@ -1,0 +1,39 @@
+.content .content-block {
+  padding: 0;
+  margin: 0; }
+
+.teacher-detail .content {
+  padding-bottom: 2.5rem; }
+.teacher-detail .content {
+  top: 2rem;
+  padding-bottom: 2.75rem; }
+.teacher-detail .active {
+  display: block; }
+.teacher-detail .facebook-card .facebook-name, .teacher-detail .facebook-card .facebook-date {
+  margin-left: 0; }
+.teacher-detail .facebook-card .facebook-name {
+  font-size: 0.8rem;
+  color: #333; }
+.teacher-detail .facebook-card .facebook-date {
+  color: #999; }
+.teacher-detail .facebook-card .card-img {
+  width: 100%; }
+.teacher-detail .main-img {
+  width: 100%;
+  max-height: 11.25rem;
+  overflow: hidden; }
+.teacher-detail .detail {
+  padding: 0 0.75rem 0.5rem;
+  background-color: #fff; }
+  .teacher-detail .detail p, .teacher-detail .detail h3 {
+    margin: 0; }
+  .teacher-detail .detail h3 {
+    padding: 0.5rem 0; }
+.teacher-detail .content-block-title {
+  font-weight: 700;
+  font-size: 1.17em;
+  margin: 0.75rem .75rem .5rem; }
+.teacher-detail .list-block {
+  margin: 0.25rem; }
+
+/*# sourceMappingURL=teacher-detail.css.map */
