@@ -1,12 +1,13 @@
 var mongodb = require('./db'),
     markdown = require('markdown').markdown;;
 
-function Post(name, title, tags, post, link) {
+function Post(name, head, title, tags, post, link) {
   this.name = name;
   this.title = title;
   this.tags = tags;
   this.post = post;
   this.link = link;
+  this.head = head;
 }
 
 module.exports = Post;
@@ -27,6 +28,7 @@ Post.prototype.save = function(callback) {
   //要存入数据库的文档
   var post = {
       name: this.name,
+      head: this.head,
       time: time,
       title: this.title,
       tags: this.tags,
@@ -102,6 +104,7 @@ Post.getTen = function(name, page, callback) {
     });
   });
 };
+
 
 //获取一篇文章
 Post.getOne = function(name, day, title, callback) {

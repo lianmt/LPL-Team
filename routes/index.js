@@ -176,7 +176,7 @@ module.exports = function(app) {
   app.post('/post', function (req, res) {
     var currentUser = req.session.user,
         tags = [req.body.tag1, req.body.tag2, req.body.tag3],
-        post = new Post(currentUser.name, req.body.title, tags, req.body.post);
+        post = new Post(currentUser.name, currentUser.head, req.body.title, tags, req.body.post);
     post.save(function (err) {
       if (err) {
         req.flash('error', err); 
@@ -325,8 +325,12 @@ module.exports = function(app) {
     var date = new Date(),
         time = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " + 
                date.getHours() + ":" + (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes());
+    var md5 = crypto.createHash('md5'),
+        email_MD5 = md5.update(req.body.email.toLowerCase()).digest('hex'),
+        head = "http://www.gravatar.com/avatar/" + email_MD5 + "?s=48"; 
     var comment = {
         name: req.body.name,
+        head: head,
         email: req.body.email,
         website: req.body.website,
         time: time,
@@ -388,31 +392,31 @@ module.exports = function(app) {
     });
   });
 
-
+  app.use(function (req, res) {
+    res.render("404");
+  });
+  /**
+   * checkNotLogin 和 checkLogin 用来检测是否登陆，
+   * 并通过 next() 转移控制权，检测到未登录则跳转到登录页，
+   * 检测到已登录则跳转到前一个页面
+   */
+  function checkLogin(req, res, next) {
+    if (!req.session.user) {
+      req.flash('error', '未登录!'); 
+      res.redirect('/login');
+    }
+    next();
+  }
+  function checkNotLogin(req, res, next) {
+    if (req.session.user) {
+      req.flash('error', '已登录!'); 
+      res.redirect('back');//返回之前的页面
+    }
+    next();
+  }
 
 
 
 
 
 };
-
-
-/**
- * checkNotLogin 和 checkLogin 用来检测是否登陆，
- * 并通过 next() 转移控制权，检测到未登录则跳转到登录页，
- * 检测到已登录则跳转到前一个页面
- */
-function checkLogin(req, res, next) {
-  if (!req.session.user) {
-    req.flash('error', '未登录!'); 
-    res.redirect('/login');
-  }
-  next();
-}
-function checkNotLogin(req, res, next) {
-  if (req.session.user) {
-    req.flash('error', '已登录!'); 
-    res.redirect('back');//返回之前的页面
-  }
-  next();
-}
