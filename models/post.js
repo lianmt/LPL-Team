@@ -58,15 +58,16 @@ Post.prototype.save = function(callback) {
 };
 
 //读取文章及其相关信息
-//Post.get 的功能是从数据库中获取文章，可以按指定用户获取，也可以获取全部的内容
-Post.getAll = function(name, callback) {
+//Post.getTen 的功能是从数据库中获取文章，可以按指定用户获取，也可以获取全部的内容
+//一次获取十篇文章
+Post.getTen = function(name, page, callback) {
   //打开数据库
   mongodb.open(function (err, db) {
     if (err) {
       return callback(err);
     }
     //读取 posts 集合
-    db.collection('posts', function(err, collection) {
+    db.collection('posts', function (err, collection) {
       if (err) {
         mongodb.close();
         return callback(err);
@@ -75,23 +76,30 @@ Post.getAll = function(name, callback) {
       if (name) {
         query.name = name;
       }
-      //根据 query 对象查询文章
-      collection.find(query).sort({
-        time: -1
-      }).toArray(function (err, docs) {
-        mongodb.close();
-        if (err) {
-          return callback(err);//失败！返回 err
-        }
-        //解析 markdown 为 html
-        docs.forEach(function (doc) {
-          doc.post = markdown.toHTML(doc.post);
+      //使用 count 返回特定查询的文档数 total
+      collection.count(query, function (err, total) {
+        //根据 query 对象查询，并跳过前 (page-1)*10 个结果，返回之后的 10 个结果
+        collection.find(query, {
+          skip: (page - 1)*10,
+          limit: 10
+        }).sort({
+          time: -1
+        }).toArray(function (err, docs) {
+          mongodb.close();
+          if (err) {
+            return callback(err);
+          }
+          //解析 markdown 为 html
+          docs.forEach(function (doc) {
+            doc.post = markdown.toHTML(doc.post);
+          });  
+          callback(null, docs, total);
         });
-        callback(null, docs);//成功！以数组形式返回查询的结果
       });
     });
   });
 };
+
 
 //获取一篇文章
 Post.getOne = function(name, day, title, callback) {

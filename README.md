@@ -10,6 +10,7 @@
 supervisor 都会自动帮我们重启应用
 supervisor app.js
 
+每当我们给博客添加新功能后，都要清空数据库（即删除 mongodb/blog 文件夹里所有文件）再启动我们的博客。
 
 app.js：启动文件，或者说入口文件
 package.json：存储着工程的信息及模块依赖，当在 dependencies 中添加依赖的模块时，运行 npm install，npm 会检查当前目录下的 package.json，并自动安装所有指定的模块
