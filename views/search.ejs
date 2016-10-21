@@ -1,12 +1,46 @@
+
 <%- include header %>
-<ul class="archive">
-<% var lastYear = 0 %>
-<% posts.forEach(function (post, index) { %>
-  <% if(lastYear != post.time.year) { %>
-    <li><h3><%= post.time.year %></h3></li>
-  <% lastYear = post.time.year } %>
-    <li><time><%= post.time.day %></time></li>
-    <li><a href="/u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>"><%= post.title %></a></li>
-<% }) %>
-</ul>
+
+<link rel="stylesheet" href="/stylesheets/search.css">
+
+<div class="page-group search">
+  <div class="page page-current" id="page-index">
+    <header class="bar bar-nav">
+      <a class="icon icon-left pull-left back"></a>
+      <h1 class="title">搜索</h1>
+    </header> 
+    <div class="bar bar-header-secondary">
+      <div class="searchbar">
+        <a class="searchbar-cancel">取消</a>
+        <form  class="search-input" action="/search" method="GET">
+          <label class="icon icon-search" for="search"></label>
+          <input type="search" id='search'  name="keyword" placeholder='输入课程关键字...'/>
+        </form>
+      </div>
+    </div>
+
+    <div class="content index-content">
+      <div class="list-block contacts-block">
+        <div class="list-group">
+        <ul class="archive">
+          <% posts.forEach(function (post, index) { %>
+            <li>
+              <a href="/u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title"><%= post.title %></div>
+                </div>
+              </div>
+              </a>
+            </li>
+          <% }) %>
+        </ul>
+      </div>
+
+      <!-- 如果是导师，显示列表 -->
+
+      <!-- 如果是课程，显示列表 -->
+    </div>
+  </div>
+</div>
 <%- include footer %>

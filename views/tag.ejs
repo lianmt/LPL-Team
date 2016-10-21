@@ -1,12 +1,32 @@
+<!-- 标签不能为中文，不然会有乱码问题 -->
+
 <%- include header %>
-<ul class="archive">
-<% var lastYear = 0 %>
-<% posts.forEach(function (post, index) { %>
-  <% if (lastYear != post.time.year) { %>
-    <li><h3><%= post.time.year %></h3></li>
-  <% lastYear = post.time.year } %>
-    <li><time><%= post.time.day %></time></li>
-    <li><a href="/u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>"><%= post.title %></a></li>
-<% }) %>
-</ul>
+<link rel="stylesheet" href="/stylesheets/tag.css">
+
+<div class="page course-detail" style="display: block;">
+  <header class="bar bar-nav">
+    <a class="icon icon-left pull-left back"></a>
+    <h1 class="title">标签</h1>
+  </header>
+  <div class="content">
+    <div class="list-block contacts-block">
+      <div class="list-group">
+        <ul>
+          <% posts.forEach(function (post, index) { %>
+            <li>
+              <a href="/u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title"><%= post.title %></div>
+                </div>
+              </div>
+              </a>
+            </li>
+          <% }) %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
 <%- include footer %>
+<script src="/javascripts/tag.js"></script>

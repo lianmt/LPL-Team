@@ -28,64 +28,54 @@
       <div class="content index-content course">
         <div class="content-block-title">教程列表</div>
         <div class="list-block media-list">
-        <ul>
-        <% posts.forEach(function (post, index) { %> 
-          <li>
-            <a href="/u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>" class="item-link item-content">
-              <div class="item-media"><img class="list-img" src="/images/favicon.png"></div>
-              <div class="item-inner">
-                <div class="item-title-row">
-                  <div class="item-title"><%= post.title %></div>
-                  <div class="item-after">
-                    <%= post.tags %>
+          <ul>
+            <% posts.forEach(function (post, index) { %> 
+              <li>
+                <a href="/u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>" class="item-link item-content">
+                  <div class="item-media"><img class="list-img" src="/images/favicon.png"></div>
+                  <div class="item-inner">
+                    <div class="item-title-row">
+                      <div class="item-title"><%= post.title %></div>
+                      <div class="item-after">
+                        <%= post.tags %>
+                      </div>
+                    </div>
+                    <div class="item-subtitle"><%= post.time.minute %></div>
+                    <div class="item-text"><%- post.post %></div>
                   </div>
-                </div>
-                <div class="item-subtitle"><%= post.time.minute %></div>
-                <div class="item-text"><%- post.post %></div>
-              </div>
-            </a>
-          </li>
-        <% }) %>
-        </ul>
+                </a>
+              </li>
+            <% }) %>
+          </ul>
         </div>
       </div>
 
       <%# 首页tab %>
       <div class="content index-content home active">
         <div class="content-block-title">优秀导师</div>
-        <!-- <div class="list-block media-list">
-          <ul>
-            <li>
-              <a href="./teacher-detail" class="item-link item-content">
-                <div class="item-media"><img class="list-img" src="/images/weijian.jpg"></div>
-                <div class="item-inner">
-                  <div class="item-title-row">
-                    <div class="item-title">林伟健</div>
-                    <div class="item-after">百度前端工程师</div>
-                  </div>
-                  <div class="item-text">花生啤酒花千骨，虐我千百遍，对就是对，错就是错！</div>
-                </div>
-              </a>
-            </li>
-          </ul>
-        </div> -->
+        
         <div class="content-block-title">优秀教程</div>
-        <!-- <div class="card facebook-card">
-          <a href="./course-detail">
-            <div class="card-header no-border">
-              <div class="facebook-name">分页页码制作</div>
-              <div class="facebook-date">8月1日</div>
-            </div>
-            <div class="card-content">
-              <img class="card-img" src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg"></div>
-            <div class="card-content">
-              <div class="card-content-inner">
-                <p>通过本课程的学习，我们可以学习到利用HTML、CSS样式技术制作出分页页码的效果。包括最简单的直角分页页码效果，修复行内元素之间的间隔bug问题分析，代码整理，为分页页码插入小图标。</p>
-              </div>
-            </div>
-            <div class="card-footer no-border">阅读原文</div>
-          </a>
-        </div> -->
+          <div class="list-block media-list">
+            <ul>
+              <% posts.forEach(function (post, index) { %> 
+                <li>
+                  <a href="/u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>" class="item-link item-content">
+                    <div class="item-media"><img class="list-img" src="/images/favicon.png"></div>
+                    <div class="item-inner">
+                      <div class="item-title-row">
+                        <div class="item-title"><%= post.title %></div>
+                        <div class="item-after">
+                          <%= post.tags %>
+                        </div>
+                      </div>
+                      <div class="item-subtitle"><%= post.time.minute %></div>
+                      <div class="item-text"><%- post.post %></div>
+                    </div>
+                  </a>
+                </li>
+              <% }) %>
+            </ul>
+          </div>
       </div>
 
       <%# 导师tab  %>
