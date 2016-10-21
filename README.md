@@ -5,6 +5,18 @@
 2、npm start
 3、node app.js
 
+开发环境搭建
+npm、nodejs、mongodb、git、sourcetree等
+
+使用的技术：
+nondejs后台框架express，示例：https://github.com/nswbmw/N-blog/wiki/_pages
+mongodb：http://www.yiibai.com/mongodb/mongodb_data_modeling.html
+淘宝组件库：http://m.sui.taobao.org/components/#icons
+git开发：https://git-scm.com/book/zh/v2
+coding代码托管平台
+github博客搭建并放置自己的demo，用作服务器
+
+
 数据库启动命令：
 1、./mongod --dbpath ../blog/
 supervisor 都会自动帮我们重启应用

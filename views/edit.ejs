@@ -1,13 +1,14 @@
 <!-- 网址 这一项需要加上 http:// 前缀，否则在生成连接的时候会基于当前 url （本地是 localhost:3000） -->
 
 <%- include header %>
+<link rel="stylesheet" href="/stylesheets/edit.css">
+
+
 <form method="post">
   标题：<br />
   <input type="text" name="title" value="<%= post.title %>" disabled="disabled" /><br />
   标签：<br />
-  <input type="text" name="tag1" value="<%= post.tags[0] %>" disabled="disabled" />
-  <input type="text" name="tag2" value="<%= post.tags[1] %>" disabled="disabled" />
-  <input type="text" name="tag3" value="<%= post.tags[2] %>" disabled="disabled" /><br />
+  <input type="text" name="tag1" value="<%= post.tags %>" disabled="disabled" /><br />
   正文：<br />
   <textarea name="post" rows="20" cols="100"><%= post.post %></textarea><br />
   demo链接：<br />

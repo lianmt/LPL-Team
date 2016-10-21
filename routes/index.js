@@ -181,7 +181,7 @@ module.exports = function(app) {
   app.post('/post', function (req, res) {
     var currentUser = req.session.user,
         tags = [req.body.tag1, req.body.tag2, req.body.tag3],
-        post = new Post(currentUser.name, currentUser.head, req.body.title, tags, req.body.post);
+        post = new Post(currentUser.name, currentUser.head, req.body.title, req.params.link, tags, req.body.post);
     post.save(function (err) {
       if (err) {
         req.flash('error', err); 
@@ -355,7 +355,7 @@ module.exports = function(app) {
   app.get('/edit/:name/:day/:title', checkLogin);
   app.get('/edit/:name/:day/:title', function (req, res) {
     var currentUser = req.session.user;
-    Post.edit(currentUser.name, req.params.day, req.params.title, function (err, post) {
+    Post.edit(currentUser.name, req.params.day, req.params.title, req.params.link, function (err, post) {
       if (err) {
         req.flash('error', err); 
         return res.redirect('back');
@@ -373,7 +373,7 @@ module.exports = function(app) {
   app.post('/edit/:name/:day/:title', checkLogin);
   app.post('/edit/:name/:day/:title', function (req, res) {
     var currentUser = req.session.user;
-    Post.update(currentUser.name, req.params.day, req.params.title, req.body.post, function (err) {
+    Post.update(currentUser.name, req.params.day, req.params.title, req.params.link, req.body.post, function (err) {
       var url = encodeURI('/u/' + req.params.name + '/' + req.params.day + '/' + req.params.title);
       if (err) {
         req.flash('error', err); 

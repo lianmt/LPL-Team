@@ -20,6 +20,8 @@ body .page, body .page-group {
   .course-detail .comment-box {
     padding: 0 0.5rem;
     box-sizing: border-box; }
+    .course-detail .comment-box img {
+      padding-right: 0.25rem; }
   .course-detail form {
     margin-bottom: 3rem; }
     .course-detail form .hide {

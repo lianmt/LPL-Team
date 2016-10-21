@@ -27,6 +27,10 @@ body .page, body  .page-group {
   .comment-box {
     padding: 0 rem(20);
     box-sizing: border-box;
+
+    img {
+      padding-right: rem(10);
+    }
   }
   form {
     margin-bottom: rem(120);
