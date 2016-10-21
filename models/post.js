@@ -2,13 +2,13 @@ var mongodb = require('./db');
     // markdown = require('markdown').markdown;
 
 
-function Post(name, head, title, tags, post, link) {
+function Post(name, head, title, link, tags, post) {
   this.name = name;
+  this.head = head;
   this.title = title;
+  this.link = link;
   this.tags = tags;
   this.post = post;
-  this.link = link;
-  this.head = head;
 }
 
 module.exports = Post;
@@ -32,9 +32,9 @@ Post.prototype.save = function(callback) {
       head: this.head,
       time: time,
       title: this.title,
+      link: this.link,
       tags: this.tags,
       post: this.post,
-      link: this.link,
       comments: [],
       pv: 0
   };
@@ -208,7 +208,6 @@ Post.update = function(name, day, title, link, post, callback) {
       collection.update({
         "name": name,
         "time.day": day,
-        "link": link,
         "title": title
       }, {
         $set: {post: post}
