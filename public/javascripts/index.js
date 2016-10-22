@@ -1,6 +1,6 @@
 // home
 
-let hash = location.hash;
+var hash = location.hash;
 if(hash){
   hash = hash.slice(1);
   // console.log('hash', hash);

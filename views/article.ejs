@@ -17,6 +17,7 @@
       <div class="detail">
         <h3>
           <%= post.title %>
+          <a href="/u/<%= post.name %>"><%= post.name %></a> 
           <% if (user && (user.name == post.name)) { %>
             <span><a class="edit" href="/edit/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">编辑</a></span>
             <span><a class="edit" href="/remove/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">删除</a></span>
@@ -26,7 +27,7 @@
           <%= post.time.minute %>
           <a class="tag" href="/tags/<%= post.tags %>"><%= post.tags %></a>
         </p>
-        <p class="c-detail"><%- post.post %>对于过去的人和过去的事，我们的态度多与旁人无异。他们背叛是为了找回那背叛过的曾经，他们回忆是为了不让回忆就此消失在过去。他们相信是因为知道这世上还有人值得相信，一次莫名其妙的生命之旅，却在黑暗中划出一道灿烂的轨迹。</p>
+        <p class="c-detail"><%- post.post %></p>
       </div>
 
       <p>阅读：<%= post.pv %> | 评论：<%= post.comments.length %></p>
@@ -34,7 +35,6 @@
     </div>      
   </div>
   
-
   <!-- 立即报名 -->
   <a class="a-btn" href="<%- post.link %>" target="_blank">查看课程演示</a>
 </div>

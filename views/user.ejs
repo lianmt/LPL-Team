@@ -1,20 +1,52 @@
 <%- include header %>
-<% posts.forEach(function (post, index) { %>
-  <p><h2><a href="/u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>"><%= post.title %></a>
-  <a href="/u/<%= post.name %>"><img src="<%= post.head %>" class="r_head" /></a>
-  </h2></p>
-  <p class="info">
-    作者：<a href="/u/<%= post.name %>"><%= post.name %></a> | 
-    日期：<%= post.time.minute %> | 
-    标签：
-    <% post.tags.forEach(function (tag, index) { %>
-      <% if (tag) { %>
-        <a class="tag" href="/tags/<%= tag %>"><%= tag %></a>
+<link rel="stylesheet" href="/stylesheets/user.css">
+
+<div class="page course-detail" style="display: block;">
+  <!-- 标题栏 -->
+  <header class="bar bar-nav">
+    <a class="icon icon-left pull-left back"></a>
+    <h1 class="title"><%= title %></h1>
+    <a class="icon icon-edit pull-right" href="/settings/<%= title %>"></a>
+  </header>
+
+  <div class="content">
+    <div class="content-block J_lessonDetail">
+      <% if (user.name == 'lianmingtang') { %>
+        <img class="main-img" src="/images/me.jpg">
+      <% } else if (user.name == 'pengbincheng') { %>
+        <img class="main-img" src="/images/bincheng.jpg">
+      <% } else if (user.name == 'linweijian') { %>
+        <img class="main-img" src="/images/weijian.jpg">
       <% } %>
-    <% }) %>
-  </p>
-  <p><%- post.post %></p>
-  <p class="info">阅读：<%= post.pv %> | 评论：<%= post.comments.length %></p>
-  <a href="<%= post.link %>">查看教程demo</a>
-<% }) %>
+      
+      <div class="detail">
+        <h3><%= users.nickname %></h3>
+        <p class="c-detail"><%= users.info %></p>
+      </div>
+
+      <div class="content-block-title">授课列表</div>
+      <div class="list-block media-list">
+        <ul>
+          <% posts.forEach(function (post, index) { %> 
+            <li>
+              <a href="/u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>" class="item-link item-content">
+                <div class="item-media"><img class="list-img" src="/images/favicon.png"></div>
+                <div class="item-inner">
+                  <div class="item-title-row">
+                    <div class="item-title"><%= post.title %></div>
+                    <div class="item-after">
+                      <%= post.tags %>
+                    </div>
+                  </div>
+                  <div class="item-subtitle"><%= post.time.minute %></div>
+                  <div class="item-text"><%- post.post %></div>
+                </div>
+              </a>
+            </li>
+          <% }) %>
+        </ul>
+      </div>
+    </div>      
+  </div>
+</div>
 <%- include footer %>

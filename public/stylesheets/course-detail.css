@@ -9,7 +9,6 @@ body .page, body .page-group {
   background-color: #fff; }
   .course-detail .main-img {
     width: 100%;
-    max-height: 11.25rem;
     overflow: hidden; }
   .course-detail .detail {
     padding: 0 0.75rem 1rem; }

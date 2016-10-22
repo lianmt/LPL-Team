@@ -53,6 +53,29 @@
       <%# 首页tab %>
       <div class="content index-content home active">
         <div class="content-block-title">优秀导师</div>
+        <div class="card facebook-card">
+          <a href="/u/<%= user.name %>">
+            <div class="card-header no-border">
+              <div class="facebook-name"><%= user.nickname %></div>
+              <div class="facebook-date">7月29日</div>
+            </div>
+            <div class="card-content">
+              <% if (user.name == 'lianmingtang') { %>
+                <img class="card-img" src="/images/me.jpg">
+              <% } else if (user.name == 'pengbincheng') { %>
+                <img class="card-img" src="/images/bincheng.jpg">
+              <% } else if (user.name == 'linweijian') { %>
+                <img class="card-img" src="/images/weijian.jpg">
+              <% } %>
+            </div>
+            <div class="card-content">
+              <div class="card-content-inner">
+                <p><%= user.info %></p>
+              </div>
+            </div>
+            <div class="card-footer no-border">了解导师</div>
+          </a>
+        </div>
         
         <div class="content-block-title">优秀教程</div>
           <div class="list-block media-list">
@@ -81,22 +104,60 @@
       <%# 导师tab  %>
       <div class="content index-content teacher">
         <div class="content-block-title">导师名单</div>
-        <!-- <div class="card facebook-card">
-          <a href="./course-detail">
+        <div class="card facebook-card">
+          <a href="/u/linweijian">
             <div class="card-header no-border">
-              <div class="facebook-name">分页页码制作</div>
-              <div class="facebook-date">8月1日</div>
+              <div class="facebook-name">林梦仙</div>
+              <div class="facebook-date">7月29日</div>
             </div>
             <div class="card-content">
-              <img class="card-img" src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg"></div>
+              <img class="card-img" src="/images/weijian.jpg">
+            </div>
             <div class="card-content">
               <div class="card-content-inner">
-                <p>通过本课程的学习，我们可以学习到利用HTML、CSS样式技术制作出分页页码的效果。包括最简单的直角分页页码效果，修复行内元素之间的间隔bug问题分析，代码整理，为分页页码插入小图标。</p>
+                <p>热爱前端开发，.net开发，喜欢运动，网络文学，期待和志同道德的朋友一起交流。</p>
               </div>
             </div>
-            <div class="card-footer no-border">阅读原文</div>
+            <div class="card-footer no-border">了解导师</div>
           </a>
-        </div> -->
+        </div>
+        <div class="card facebook-card">
+          <a href="/u/pengbincheng">
+            <div class="card-header no-border">
+              <div class="facebook-name">曼珠之伤  </div>
+              <div class="facebook-date">7月29日</div>
+            </div>
+            <div class="card-content">
+              
+                <img class="card-img" src="/images/bincheng.jpg">
+              
+            </div>
+            <div class="card-content">
+              <div class="card-content-inner">
+                <p>生命如流水，感觉脆弱却一直在奔淌不息。希愿你能在不住的流淌中，找寻到生命的意义，于路上不断见证，不断学习，不断成长。</p>
+              </div>
+            </div>
+            <div class="card-footer no-border">了解导师</div>
+          </a>
+        </div>
+        <div class="card facebook-card">
+          <a href="/u/lianmingtang">
+            <div class="card-header no-border">
+              <div class="facebook-name">连明堂</div>
+              <div class="facebook-date">7月29日</div>
+            </div>
+            <div class="card-content">
+              <img class="card-img" src="/images/me.jpg">
+            </div>
+            <div class="card-content">
+              <div class="card-content-inner">
+                <p>开始吧，坚持下去。<br/>
+                  o，正式介绍一下，我喜欢摄影哦，因为.&$*#@，还喜欢静静，静静地~*#￥%，哦我的名字是连明堂</p>
+              </div>
+            </div>
+            <div class="card-footer no-border">了解导师</div>
+          </a>
+        </div>
       </div>
     </div>
     
@@ -106,10 +167,15 @@
     <div class="content-block">
       <%# 注册登录 %>
       <% if (user) { %>
-
         <p class="portrait">
-          <img class="user-photo" src="/images/me.jpg" alt="">
-          <a href="#" class="close-panel c-blue"><%= user.name %></a>&nbsp;
+          <% if (user.name == 'lianmingtang') { %>
+            <img class="user-photo" src="/images/me.jpg">
+          <% } else if (user.name == 'pengbincheng') { %>
+            <img class="user-photo" src="/images/bincheng.jpg">
+          <% } else if (user.name == 'linweijian') { %>
+            <img class="user-photo" src="/images/weijian.jpg">
+          <% } %>
+          <a href="/u/<%- user.name %>" class="close-panel c-blue"><%= user.name %></a>&nbsp;
           <a title="登出" href="/logout">登出</a>
         </p>
 

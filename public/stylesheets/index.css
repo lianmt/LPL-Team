@@ -10,6 +10,8 @@
   width: 4rem;
   height: 4rem; }
 
+.index .bar {
+  z-index: 16; }
 .index .tabs .content {
   top: 2rem;
   padding-bottom: 2.75rem;
