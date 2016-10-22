@@ -11,13 +11,7 @@
 
   <div class="content">
     <div class="content-block J_lessonDetail">
-      <% if (user.name == 'lianmingtang') { %>
-        <img class="main-img" src="/images/me.jpg">
-      <% } else if (user.name == 'pengbincheng') { %>
-        <img class="main-img" src="/images/bincheng.jpg">
-      <% } else if (user.name == 'linweijian') { %>
-        <img class="main-img" src="/images/weijian.jpg">
-      <% } %>
+      <img class="main-img" src="">
       
       <div class="detail">
         <h3><%= users.nickname %></h3>
@@ -50,3 +44,5 @@
   </div>
 </div>
 <%- include footer %>
+
+<script src="/javascripts/user.js"></script>
