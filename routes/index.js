@@ -331,6 +331,7 @@ module.exports = function(app) {
   });
   app.get('/tags/:tag', function (req, res) {
     Post.getTag(req.params.tag, function (err, posts) {
+      console.log(posts);
       if (err) {
         req.flash('error',err); 
         return res.redirect('/');
