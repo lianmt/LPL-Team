@@ -73,9 +73,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 routes(app);
 
-app.listen(app.get('port'), function() {
-  console.log('Express server listening on port ' + app.get('port'));
-});
+// app.listen(app.get('port'), function() {
+//   console.log('Express server listening on port ' + app.get('port'));
+// });
 
 
 /**
