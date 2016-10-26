@@ -41,6 +41,8 @@ ejs 的标签系统非常简单，它只有以下三种标签：
 
 通过引入会话（session）机制记录用户登录状态
 
+
+
 环境搭建：
 1、安装nodejs（包含了npm）
 2、安装对应系统的mongodb数据库
@@ -48,7 +50,8 @@ ejs 的标签系统非常简单，它只有以下三种标签：
 4、安装对应的自动修改相关插件，跑起我们的项目
 
 
-
-
-
+--------------------------------
+伟健
+在C:\Users\linweijian\Downloads\bin目录下cmd跑命令: mongod --dbpath C:\Users\linweijian\Downloads\data\db
+supervisor app.js
 
