@@ -78,6 +78,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // 传实例到路由文件
 routes(app);
 
+
 // 打印端口号信息到控制台
 app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
