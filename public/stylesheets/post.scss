@@ -1,0 +1,13 @@
+@import "./_rem.scss";
+
+.set-hide {
+  display: none;
+}
+
+textarea {
+  width: 100%;
+}
+.content-block {
+  padding: 0;
+  margin-top: rem(20);
+}

@@ -1,7 +1,22 @@
 <%- include header %>
-<form method='post' action='/upload' enctype='multipart/form-data' >
-  <input type="file" multiple name='field1'/><br>
-  <input type="submit" />
-</form>
+<link rel="stylesheet" href="/stylesheets/post.css">
+
+
+<div class="page course-detail" style="display: block;">
+  <!-- 标题栏 -->
+  <header class="bar bar-nav">
+    <a class="icon icon-left pull-left back"></a>
+    <h1 class="title">文件上传</h1>
+  </header>
+
+  <div class="content">
+    <div class="content-block J_lessonDetail">
+      <form method='post' action='/upload' enctype='multipart/form-data' >
+        <input type="file" multiple name='field1'/><br>
+        <input type="submit" />
+      </form>
+    </div>      
+  </div>
+</div>
 
 <%- include footer %>

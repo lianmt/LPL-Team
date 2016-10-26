@@ -1,5 +1,8 @@
 #LPL
-参考项目教程：https://github.com/nswbmw/N-blog/wiki/_pages
+下载 nodejs
+npm install
+
+
 项目启动命令：
 1、DEBUG=blog:* npm start
 2、npm start
@@ -18,7 +21,7 @@ github博客搭建并放置自己的demo，用作服务器
 
 
 数据库启动命令：
-1、./mongod --dbpath ../blog/
+1、./mongod --dbpath ../lpl/
 supervisor 都会自动帮我们重启应用
 supervisor app.js
 

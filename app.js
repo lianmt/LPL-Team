@@ -1,12 +1,14 @@
 // 入口文件
 
-var express = require('express'); // 生成一个express实例 app。
+var express = require('express');
+// 引入一些必要依赖
 var path = require('path'); 
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+// 引入路由文件
 var routes = require('./routes/index');
 
 /**
@@ -15,13 +17,13 @@ var routes = require('./routes/index');
  * 通过 require 这个文件来对数据库进行读写
  */
 var settings = require('./settings');
+// 引入 flash 模块来实现页面通知（即成功与错误信息的显示）的功能
 var flash = require('connect-flash');
 
 // 后期简化而成的代码
 // var users = require('./routes/users');
 
-
-
+// 生成一个express实例 app。
 var app = express();
 
 /**
@@ -36,6 +38,7 @@ var app = express();
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 
+// 把cookie存进数据库
 app.use(session({
   secret: settings.cookieSecret,
   key: settings.db,//cookie name
@@ -55,6 +58,7 @@ app.set('port', process.env.PORT || 5000);
 app.set('views', path.join(__dirname, 'views'));
 // 设置视图模板引擎为 ejs
 app.set('view engine', 'ejs');
+// 引入 flash 模块来实现页面通知（即成功与错误信息的显示）的功能
 app.use(flash());
 
 // 设置/favicon.ico为 网站favicon图标。
@@ -71,8 +75,10 @@ app.use(cookieParser());
 // 设置public文件夹为存放静态文件的目录
 app.use(express.static(path.join(__dirname, 'public')));
 
+// 传实例到路由文件
 routes(app);
 
+// 打印端口号信息到控制台
 app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
 });
