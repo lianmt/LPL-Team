@@ -1,5 +1,31 @@
 <%- include header %>
-<% posts.forEach(function (tag, index) { %>
-  <a class="tag" href="/tags/<%= tag %>"><%= tag %></a>
-<% }) %>
+<link rel="stylesheet" href="/stylesheets/edit.css">
+
+<div class="page course-detail" style="display: block;">
+  <!-- 标题栏 -->
+  <header class="bar bar-nav">
+    <a class="icon icon-left pull-left back"></a>
+    <h1 class="title">标签列表</h1>
+  </header>
+
+  <div class="content">
+    <div class="list-block contacts-block" style="margin: 0;">
+      <div class="list-group">
+        <ul class="archive">
+          <% posts.forEach(function (tag, index) { %>
+            <li>
+              <a href="/tags/<%= tag %>">
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title"><%= tag %></div>
+                </div>
+              </div>
+              </a>
+            </li>
+          <% }) %>
+        </ul>
+      </div>
+    </div>      
+  </div>
+</div>
 <%- include footer %>
