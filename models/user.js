@@ -1,3 +1,4 @@
+// 类似数据库的集合概念
 var mongodb = require('./db');
 var crypto = require('crypto');
 
