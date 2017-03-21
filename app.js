@@ -80,9 +80,9 @@ routes(app);
 
 
 // 打印端口号信息到控制台
-app.listen(app.get('port'), function() {
-  console.log('Express server listening on port ' + app.get('port'));
-});
+// app.listen(app.get('port'), function() {
+//   console.log('Express server listening on port ' + app.get('port'));
+// });
 
 
 /**

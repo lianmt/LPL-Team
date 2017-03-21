@@ -13,7 +13,7 @@ Windows：
         在mongodb数据库目录下的bin目录下，cmd跑命令: mongod --dbpath  项目路径（例如：C:\Users\linweijian\Downloads\data\db）
     运行项目，共有三个可使用命令：
         每次修改代码需要重启项目
-        nam start
+        npm start
         node app.js
         自动帮你启动项目，安装supervisor 模块
         supervisor app.js
