@@ -1,7 +1,7 @@
-#LPL
+#LPL-Team，连明堂-彭斌城-林伟健
 使用的技术：
 nondejs后台框架express，示例：https://github.com/nswbmw/N-blog/wiki/_pages
-mongodb：http://www.yiibai.com/mongodb/mongodb_data_modeling.html
+需要自己搭建mongodb：http://www.yiibai.com/mongodb/mongodb_data_modeling.html
 淘宝组件库：http://m.sui.taobao.org/components/#icons
 git开发：https://git-scm.com/book/zh/v2
 coding代码托管平台
