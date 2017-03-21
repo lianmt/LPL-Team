@@ -1,11 +1,11 @@
 #LPL-Team，连明堂-彭斌城-林伟健
 ##使用的技术：
-> 1.nondejs后台框架express，示例：https://github.com/nswbmw/N-blog/wiki/_pages
-> 2.需要自己搭建mongodb：http://www.yiibai.com/mongodb/mongodb_data_modeling.html
-> 3.淘宝组件库：http://m.sui.taobao.org/components/#icons
-> 4.git开发：https://git-scm.com/book/zh/v2
-> 5.coding代码托管平台
-> 6.github博客搭建并放置自己的demo，用作服务器
+> 1. nondejs后台框架express，示例：https://github.com/nswbmw/N-blog/wiki/_pages
+> 2. 需要自己搭建mongodb：http://www.yiibai.com/mongodb/mongodb_data_modeling.html
+> 3. 淘宝组件库：http://m.sui.taobao.org/components/#icons
+> 4. git开发：https://git-scm.com/book/zh/v2
+> 5. coding代码托管平台
+> 6. github博客搭建并放置自己的demo，用作服务器
 
 ##首先运行mongodb数据库然后在运行项目
 ###Windows：
@@ -31,24 +31,24 @@
 ##每当我们给博客添加新功能后，都要清空数据库（即删除 mongodb/blog 文件夹里所有文件）再启动我们的博客。
 
 ##环境搭建：
-> 1、安装nodejs（包含了npm）
-> 2、安装对应系统的mongodb数据库
-> 3、创建数据库的储存空间，跑起数据库
-> 4、安装对应的自动修改相关插件，跑起我们的项目
+> 1. 安装nodejs（包含了npm）
+> 2. 安装对应系统的mongodb数据库
+> 3. 创建数据库的储存空间，跑起数据库
+> 4. 安装对应的自动修改相关插件，跑起我们的项目
 
 
 --------------------------------
 ##伟健
-在C:\Users\linweijian\Downloads\bin目录下cmd跑命令: mongod --dbpath C:\Users\linweijian\Downloads\data\db
+> 在C:\Users\linweijian\Downloads\bin目录下cmd跑命令: mongod --dbpath C:\Users\linweijian\Downloads\data\db
 supervisor app.js
 
 
 ##总共包含的内容：
 毕业设计
-    - nondejs后台框架express
     - mongodb
     - 淘宝UI组件库
     - 功能列表
+    - nondejs后台框架express
 论文
 微信平台
     - 微信公众号创建、运营、设置
